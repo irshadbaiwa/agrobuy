@@ -3,7 +3,7 @@ import { Text } from "react-native";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../lib/utils";
 
-const textVariants = cva("text-slate-600", {
+const textVariants = cva("text-slate-600 font-medium", {
   variants: {
     variant: {
       default: "font-normal",
@@ -11,9 +11,10 @@ const textVariants = cva("text-slate-600", {
       link: "text-blue-600",
     },
     size: {
+      xl: "text-4xl",
       lg: "text-2xl",
-      base: "text-lg",
-      sm: "text-base",
+      base: "text-base",
+      sm: "text-sm",
     },
   },
   defaultVariants: {
