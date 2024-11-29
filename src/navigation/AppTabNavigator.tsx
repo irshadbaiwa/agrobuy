@@ -1,10 +1,12 @@
+import { StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { navRoutes } from "./NavRoutes";
-import HomeScreen from "../screens/HomeScreen";
-import SearchScreen from "../screens/SearchScreen";
-import TrendScreen from "../screens/TrendScreen";
-import OrderScreen from "../screens/OrderScreen";
-import ProfileScreen from "../screens/ProfileScreen";
+import HomeScreen, { homeScreenOptions } from "../screens/HomeScreen";
+import SearchScreen, { searchScreenOptions } from "../screens/SearchScreen";
+import TrendScreen, { trendScreenOptions } from "../screens/TrendScreen";
+import OrderScreen, { orderScreenOptions } from "../screens/OrderScreen";
+import ProfileScreen, { profileScreenOptions } from "../screens/ProfileScreen";
+import { BlurView } from "expo-blur";
 
 const Tab = createBottomTabNavigator();
 
@@ -12,13 +14,36 @@ export default function TabNavigator() {
   return (
     <Tab.Navigator
       initialRouteName={navRoutes.home}
-      screenOptions={{ headerShown: false, animation: "fade" }}
+      screenOptions={{
+        headerShown: false,
+        animation: "fade",
+      }}
     >
-      <Tab.Screen name={navRoutes.home} component={HomeScreen} />
-      <Tab.Screen name={navRoutes.search} component={SearchScreen} />
-      <Tab.Screen name={navRoutes.trends} component={TrendScreen} />
-      <Tab.Screen name={navRoutes.orders} component={OrderScreen} />
-      <Tab.Screen name={navRoutes.profile} component={ProfileScreen} />
+      <Tab.Screen
+        name={navRoutes.home}
+        component={HomeScreen}
+        options={homeScreenOptions}
+      />
+      <Tab.Screen
+        name={navRoutes.search}
+        component={SearchScreen}
+        options={searchScreenOptions}
+      />
+      <Tab.Screen
+        name={navRoutes.trends}
+        component={TrendScreen}
+        options={trendScreenOptions}
+      />
+      <Tab.Screen
+        name={navRoutes.orders}
+        component={OrderScreen}
+        options={orderScreenOptions}
+      />
+      <Tab.Screen
+        name={navRoutes.profile}
+        component={ProfileScreen}
+        options={profileScreenOptions}
+      />
     </Tab.Navigator>
   );
 }

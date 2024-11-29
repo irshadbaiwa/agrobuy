@@ -12,14 +12,18 @@ const sizes: Record<string, number> = {
 const colorVariants: Record<string, string> = {
   default: colors.slate[400],
   link: colors.blue[600],
+  primary: colors.green[900],
+  emphasized: colors.slate[800],
 };
 
 type IconProps = {
   iconSize?: "default" | "lg" | "sm" | "xl" | "xs";
+  variant?: "default" | "primary" | "link" | "emphasized";
 };
 
 export const Icon: React.FC<IconProps & ComponentProps<typeof Ionicons>> = ({
   iconSize = "default",
+  variant = "default",
   name,
   ...props
 }) => {
@@ -27,7 +31,7 @@ export const Icon: React.FC<IconProps & ComponentProps<typeof Ionicons>> = ({
     <Ionicons
       size={sizes[iconSize] ?? 24}
       name={name}
-      color={colors.slate[400]}
+      color={colorVariants[variant] ?? colors.slate[400]}
       {...props}
     />
   );

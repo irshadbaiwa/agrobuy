@@ -3,6 +3,8 @@ import { ScreenLayout } from "../components/layouts/ScreenLayout";
 import HeaderText from "../components/typography/Heading";
 import CustomText from "../components/typography/CustomText";
 import { Icon } from "../components/ui/Icon";
+import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
+import colors from "tailwindcss/colors";
 
 const ProfileScreen = () => {
   return (
@@ -20,6 +22,17 @@ const ProfileScreen = () => {
       </View>
     </ScreenLayout>
   );
+};
+
+export const profileScreenOptions: BottomTabNavigationOptions = {
+  tabBarIcon: ({ focused }) => {
+    return focused ? (
+      <Icon name="person-circle" variant="primary" />
+    ) : (
+      <Icon name="person-circle-outline" />
+    );
+  },
+  tabBarActiveTintColor: colors.green[900],
 };
 
 export default ProfileScreen;

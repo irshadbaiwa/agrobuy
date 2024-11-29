@@ -48,7 +48,7 @@ export const ScreenLayout: React.FC<Props> = ({
         flex: 1,
         position: "relative",
       }}
-      className="bg-slate-200"
+      className="bg-slate-100"
       {...props}
     >
       <StatusBar style="dark" />

@@ -3,6 +3,8 @@ import { ScreenLayout } from "../components/layouts/ScreenLayout";
 import HeaderText from "../components/typography/Heading";
 import CustomText from "../components/typography/CustomText";
 import { Icon } from "../components/ui/Icon";
+import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
+import colors from "tailwindcss/colors";
 
 const TrendScreen = () => {
   return (
@@ -20,6 +22,17 @@ const TrendScreen = () => {
       </View>
     </ScreenLayout>
   );
+};
+
+export const trendScreenOptions: BottomTabNavigationOptions = {
+  tabBarIcon: ({ focused }) => {
+    return focused ? (
+      <Icon name="trending-up" variant="primary" />
+    ) : (
+      <Icon name="trending-up" />
+    );
+  },
+  tabBarActiveTintColor: colors.green[900],
 };
 
 export default TrendScreen;

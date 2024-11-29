@@ -3,6 +3,8 @@ import { ScreenLayout } from "../components/layouts/ScreenLayout";
 import HeaderText from "../components/typography/Heading";
 import CustomText from "../components/typography/CustomText";
 import { Icon } from "../components/ui/Icon";
+import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
+import colors from "tailwindcss/colors";
 
 const OrderScreen = () => {
   return (
@@ -20,6 +22,17 @@ const OrderScreen = () => {
       </View>
     </ScreenLayout>
   );
+};
+
+export const orderScreenOptions: BottomTabNavigationOptions = {
+  tabBarIcon: ({ focused }) => {
+    return focused ? (
+      <Icon name="cart" variant="primary" />
+    ) : (
+      <Icon name="cart-outline" />
+    );
+  },
+  tabBarActiveTintColor: colors.green[900],
 };
 
 export default OrderScreen;

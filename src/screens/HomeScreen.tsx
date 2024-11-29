@@ -4,6 +4,9 @@ import HeaderText from "../components/typography/Heading";
 import { Icon } from "../components/ui/Icon";
 import { useNavigation } from "@react-navigation/native";
 import { navRoutes } from "../navigation/NavRoutes";
+import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
+import CustomText from "../components/typography/CustomText";
+import colors from "tailwindcss/colors";
 
 const HomeScreen = () => {
   const nav = useNavigation();
@@ -28,6 +31,17 @@ const HomeScreen = () => {
       <View className="h-screen w-full bg-green-600 rounded-3xl mt-6" />
     </ScreenLayout>
   );
+};
+
+export const homeScreenOptions: BottomTabNavigationOptions = {
+  tabBarIcon: ({ focused }) => {
+    return focused ? (
+      <Icon name="home" variant="primary" />
+    ) : (
+      <Icon name="home-outline" />
+    );
+  },
+  tabBarActiveTintColor: colors.green[900],
 };
 
 export default HomeScreen;
