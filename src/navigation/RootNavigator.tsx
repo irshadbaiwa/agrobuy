@@ -1,8 +1,8 @@
 import { navRoutes } from "./NavRoutes";
-import ProfileScreen from "../screens/ProfileScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TabNavigator from "./AppTabNavigator";
 import ProductScreen from "../screens/ProductScreen";
+import NotificationScreen from "../screens/NotificationScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +14,10 @@ export default function RootNavigator() {
     >
       <Stack.Screen name={navRoutes.appTabs} component={TabNavigator} />
       <Stack.Screen name={navRoutes.product} component={ProductScreen} />
+      <Stack.Screen
+        name={navRoutes.notification}
+        component={NotificationScreen}
+      />
     </Stack.Navigator>
   );
 }

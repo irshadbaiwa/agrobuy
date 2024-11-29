@@ -6,4 +6,5 @@ export const navRoutes = {
   orders: "Order",
   profile: "Profile",
   product: "Product",
+  notification: "Notifications",
 };

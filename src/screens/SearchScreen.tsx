@@ -1,4 +1,4 @@
-import { Pressable, View } from "react-native";
+import { Pressable, StyleSheet, TextInput, View } from "react-native";
 import { ScreenLayout } from "../components/layouts/ScreenLayout";
 import HeaderText from "../components/typography/Heading";
 import { Icon } from "../components/ui/Icon";
@@ -23,14 +23,40 @@ const SearchScreen = () => {
         </View>
       }
     >
-      <Pressable onPress={goToProducts}>
-        <CustomText>products</CustomText>
+      <Pressable
+        style={styles.btn}
+        onPress={goToProducts}
+        className="h-12 rounded-md flex flex-row items-center justify-center bg-green-900 px-2 py-4"
+      >
+        <CustomText
+          className="text-white font-semibold"
+          style={{ color: "white" }}
+          numberOfLines={1}
+        >
+          Products
+        </CustomText>
       </Pressable>
-      <View className="h-screen w-full bg-blue-600 rounded-3xl" />
-      <View className="h-screen w-full bg-green-600 rounded-3xl mt-6" />
+      <View className="flex-1 flex flex-col items-center justify-center">
+        <Icon name="construct-outline" iconSize="xl" />
+        <CustomText>Search</CustomText>
+      </View>
     </ScreenLayout>
   );
 };
+
+const styles = StyleSheet.create({
+  btn: {
+    backgroundColor: colors.green[900],
+    color: colors.slate[50],
+    borderRadius: 8,
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+    height: 36,
+    minWidth: 96,
+    maxWidth: "100%",
+    width: "auto",
+  },
+});
 
 export const searchScreenOptions: BottomTabNavigationOptions = {
   tabBarIcon: ({ focused }) => {

@@ -1,37 +1,56 @@
-import { Pressable, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import { ScreenLayout } from "../components/layouts/ScreenLayout";
 import HeaderText from "../components/typography/Heading";
 import { Icon } from "../components/ui/Icon";
 import { useNavigation } from "@react-navigation/native";
 import { navRoutes } from "../navigation/NavRoutes";
 import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
-import CustomText from "../components/typography/CustomText";
 import colors from "tailwindcss/colors";
+import { ProductsGrid } from "../components/home/ProductsGrid";
+import { CategorySelector } from "../components/home/CategorySelector";
 
 const HomeScreen = () => {
   const nav = useNavigation();
-  const goToOrders = () => {
+  const goToNotifications = () => {
     // @ts-ignore
-    nav.navigate(navRoutes.orders);
+    nav.navigate(navRoutes.notification);
   };
+
   return (
     <ScreenLayout
       title={
         <View className="flex flex-row gap-2 items-baseline">
           <View className="flex-1">
-            <HeaderText numberOfLines={1}>Welcome 👋</HeaderText>
+            <HeaderText
+              className="font-bold"
+              variant="subtitle"
+              numberOfLines={1}
+            >
+              Agrobuy
+            </HeaderText>
           </View>
-          <Pressable onPress={goToOrders}>
-            <Icon name="cart-outline" iconSize="lg" />
+          <Pressable onPress={goToNotifications}>
+            <Icon
+              name="notifications-outline"
+              iconSize="default"
+              variant="emphasized"
+            />
           </Pressable>
         </View>
       }
     >
-      <View className="h-screen w-full bg-blue-600 rounded-3xl" />
-      <View className="h-screen w-full bg-green-600 rounded-3xl mt-6" />
+      {/* Categories */}
+      <CategorySelector />
+
+      {/* Products */}
+      <ProductsGrid />
     </ScreenLayout>
   );
 };
+
+const styles = StyleSheet.create({
+  categoriesContainer: {},
+});
 
 export const homeScreenOptions: BottomTabNavigationOptions = {
   tabBarIcon: ({ focused }) => {

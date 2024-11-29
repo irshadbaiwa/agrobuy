@@ -9,6 +9,7 @@ const textVariants = cva("text-slate-600 font-medium", {
       default: "font-normal",
       supporting: "text-slate-400",
       link: "text-blue-600",
+      emphasized: "text-gray-900",
     },
     size: {
       xl: "text-4xl",
@@ -25,7 +26,7 @@ const textVariants = cva("text-slate-600 font-medium", {
 
 type CustomProps = {
   children?: React.ReactNode;
-  variant?: "default" | "supporting" | "link";
+  variant?: "default" | "supporting" | "link" | "emphasized";
 };
 type Props = ComponentProps<typeof Text> &
   VariantProps<typeof textVariants> &

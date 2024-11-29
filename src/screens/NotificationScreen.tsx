@@ -5,7 +5,7 @@ import CustomText from "../components/typography/CustomText";
 import { Icon } from "../components/ui/Icon";
 import { useNavigation } from "@react-navigation/native";
 
-const ProductScreen = () => {
+const NotificationScreen = () => {
   const nav = useNavigation();
   return (
     <ScreenLayout
@@ -14,16 +14,16 @@ const ProductScreen = () => {
           <Pressable onPress={nav.goBack}>
             <Icon name="chevron-back" />
           </Pressable>
-          <HeaderText variant="subtitle">Product Name</HeaderText>
+          <HeaderText variant="subtitle">Notifications</HeaderText>
         </View>
       }
     >
       <View className="flex-1 flex flex-col items-center justify-center">
         <Icon name="construct-outline" iconSize="xl" />
-        <CustomText>Products screen</CustomText>
+        <CustomText>Notifications screen</CustomText>
       </View>
     </ScreenLayout>
   );
 };
 
-export default ProductScreen;
+export default NotificationScreen;

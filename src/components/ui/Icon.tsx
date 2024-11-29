@@ -1,6 +1,6 @@
 import { ComponentProps } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import colors from "tailwindcss/colors";
+import colors, { white } from "tailwindcss/colors";
 
 const sizes: Record<string, number> = {
   default: 24,
@@ -14,11 +14,21 @@ const colorVariants: Record<string, string> = {
   link: colors.blue[600],
   primary: colors.green[900],
   emphasized: colors.slate[800],
+  white: colors.white,
+  error: colors.red[600],
+  success: colors.green[600],
 };
 
 type IconProps = {
   iconSize?: "default" | "lg" | "sm" | "xl" | "xs";
-  variant?: "default" | "primary" | "link" | "emphasized";
+  variant?:
+    | "default"
+    | "primary"
+    | "link"
+    | "emphasized"
+    | "white"
+    | "error"
+    | "success";
 };
 
 export const Icon: React.FC<IconProps & ComponentProps<typeof Ionicons>> = ({
