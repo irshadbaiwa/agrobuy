@@ -15,6 +15,17 @@ export const getProducts = async (category?: string) => {
   }));
 };
 
+export const getProductById = async (id: string) => {
+  const response = await fakeStoreApi.get(`/products/${id}`);
+  const item = response.data;
+
+  return {
+    ...item,
+    category: categoryMapping[item.category]?.title || item.category,
+    apiCategory: item.category,
+  };
+};
+
 export const getAllProducts = async () => {
   const response = await fakeStoreApi.get("/products");
 

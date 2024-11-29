@@ -67,6 +67,7 @@ export const ProductsFound = () => {
           renderItem={({ item }) => (
             <View style={{ flex: 1, marginHorizontal: 4 }}>
               <ProductCard
+                id={item.id}
                 title={item.title}
                 description={item.description}
                 price={item.price}

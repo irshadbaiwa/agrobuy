@@ -12,6 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import { navRoutes } from "../../navigation/NavRoutes";
 
 type CardProps = {
+  id: string | number;
   title: string;
   description: string;
   price: string | number;
@@ -19,6 +20,7 @@ type CardProps = {
 };
 
 export const ProductCard: React.FC<CardProps> = ({
+  id,
   title,
   description,
   price,
@@ -27,10 +29,10 @@ export const ProductCard: React.FC<CardProps> = ({
   const nav = useNavigation();
   const viewProduct = () => {
     // @ts-ignore
-    nav.navigate(navRoutes.product);
+    nav.navigate(navRoutes.product, { id });
   };
 
-  const addToCart = () => Alert.alert("Add to cart");
+  const addToCart = () => Alert.alert("Addede to cart");
 
   return (
     <Pressable
@@ -63,7 +65,7 @@ export const ProductCard: React.FC<CardProps> = ({
       </View>
       <View className="flex flex-row gap-2 w-full justify-between items-end mt-1 px-1">
         <HeaderText className="text-green-900" variant="subtitle">
-          N{price}
+          ₦{price}
         </HeaderText>
         <Pressable
           onPress={addToCart}
