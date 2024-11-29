@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "agrobuy",
+    "name": "Agrobuy",
     "slug": "agrobuy",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -22,9 +22,10 @@
       },
       "package": "com.anonymous.agrobuy"
     },
-    "web": {
-      "favicon": "./assets/favicon.png",
-      "bundler": "metro"
+    "extra": {
+      "eas": {
+        "projectId": "324bc428-2f8e-40d5-9d7b-537cc09576f3"
+      }
     }
   }
 }

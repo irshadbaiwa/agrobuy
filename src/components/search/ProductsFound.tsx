@@ -19,6 +19,7 @@ export const ProductsFound = () => {
   });
 
   const search = useRecoilValue(searchQuery).toLowerCase();
+  const [isFiltering, setIsFiltering] = useState(true);
   const [filteredData, setFilteredData] = useState<
     {
       item: string;
@@ -31,6 +32,7 @@ export const ProductsFound = () => {
 
   useEffect(() => {
     if (!data) return;
+    setIsFiltering(true);
     const filtered = data.filter(
       (item: {
         title: string;
@@ -43,12 +45,13 @@ export const ProductsFound = () => {
         item.apiCategory.toLowerCase().startsWith(search)
     );
     setFilteredData(filtered);
+    setIsFiltering(false);
   }, [data, search]);
 
   return (
     <View className="mt-4">
       <HeaderText variant="subtitle">Products</HeaderText>
-      {isLoading ? (
+      {isLoading || isFiltering ? (
         <Loading />
       ) : error ? (
         <Error />
