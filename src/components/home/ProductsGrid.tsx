@@ -9,8 +9,6 @@ import { useRecoilValue } from "recoil";
 import { selectedCategory } from "../../recoil/atoms";
 
 export const ProductsGrid = () => {
-  const nav = useNavigation();
-
   const category = useRecoilValue(selectedCategory).apiCategory;
 
   const { data, isLoading, error, refetch } = useQuery({

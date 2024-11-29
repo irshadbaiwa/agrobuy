@@ -6,7 +6,6 @@ import SearchScreen, { searchScreenOptions } from "../screens/SearchScreen";
 import TrendScreen, { trendScreenOptions } from "../screens/TrendScreen";
 import OrderScreen, { orderScreenOptions } from "../screens/OrderScreen";
 import ProfileScreen, { profileScreenOptions } from "../screens/ProfileScreen";
-import { BlurView } from "expo-blur";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,6 +16,7 @@ export default function TabNavigator() {
       screenOptions={{
         headerShown: false,
         animation: "fade",
+        tabBarHideOnKeyboard: true,
       }}
     >
       <Tab.Screen

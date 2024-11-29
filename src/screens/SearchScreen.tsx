@@ -1,62 +1,37 @@
-import { Pressable, StyleSheet, TextInput, View } from "react-native";
+import { Pressable, TextInput, View } from "react-native";
 import { ScreenLayout } from "../components/layouts/ScreenLayout";
-import HeaderText from "../components/typography/Heading";
 import { Icon } from "../components/ui/Icon";
-import { useNavigation } from "@react-navigation/native";
-import { navRoutes } from "../navigation/NavRoutes";
-import CustomText from "../components/typography/CustomText";
 import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
 import colors from "tailwindcss/colors";
+import { useRecoilState } from "recoil";
+import { searchQuery } from "../recoil/atoms";
+import { CategoriesFound } from "../components/search/CategoriesFound";
+import { ProductsFound } from "../components/search/ProductsFound";
 
 const SearchScreen = () => {
-  const navigation = useNavigation();
-  const goToProducts = () => {
-    // @ts-ignore
-    navigation.navigate(navRoutes.product);
-  };
+  const [search, setSearch] = useRecoilState(searchQuery);
+
   return (
     <ScreenLayout
       title={
-        <View className="flex flex-row gap-2 items-baseline">
-          <HeaderText>Search</HeaderText>
-          <Icon name="search" />
+        <View className="flex flex-row gap-2 items-center">
+          <TextInput
+            placeholder="Search..."
+            className="h-11 px-2 border border-slate-300 rounded-md flex-1"
+            onChangeText={setSearch}
+            value={search}
+          />
+          <Pressable className="h-full bg-white border border-slate-300 px-2 py-1 items-center justify-center rounded-md">
+            <Icon name="filter-outline" variant="primary" />
+          </Pressable>
         </View>
       }
     >
-      <Pressable
-        style={styles.btn}
-        onPress={goToProducts}
-        className="h-12 rounded-md flex flex-row items-center justify-center bg-green-900 px-2 py-4"
-      >
-        <CustomText
-          className="text-white font-semibold"
-          style={{ color: "white" }}
-          numberOfLines={1}
-        >
-          Products
-        </CustomText>
-      </Pressable>
-      <View className="flex-1 flex flex-col items-center justify-center">
-        <Icon name="construct-outline" iconSize="xl" />
-        <CustomText>Search</CustomText>
-      </View>
+      <CategoriesFound />
+      <ProductsFound />
     </ScreenLayout>
   );
 };
-
-const styles = StyleSheet.create({
-  btn: {
-    backgroundColor: colors.green[900],
-    color: colors.slate[50],
-    borderRadius: 8,
-    paddingVertical: 4,
-    paddingHorizontal: 8,
-    height: 36,
-    minWidth: 96,
-    maxWidth: "100%",
-    width: "auto",
-  },
-});
 
 export const searchScreenOptions: BottomTabNavigationOptions = {
   tabBarIcon: ({ focused }) => {

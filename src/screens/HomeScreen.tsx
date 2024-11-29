@@ -48,10 +48,6 @@ const HomeScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  categoriesContainer: {},
-});
-
 export const homeScreenOptions: BottomTabNavigationOptions = {
   tabBarIcon: ({ focused }) => {
     return focused ? (

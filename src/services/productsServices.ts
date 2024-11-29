@@ -15,4 +15,14 @@ export const getProducts = async (category?: string) => {
   }));
 };
 
+export const getAllProducts = async () => {
+  const response = await fakeStoreApi.get("/products");
+
+  return response.data.map((item: any) => ({
+    ...item,
+    category: categoryMapping[item.category]?.title || item.category,
+    apiCategory: item.category,
+  }));
+};
+
 export const productsQueryKey = "PRODUCTS";
